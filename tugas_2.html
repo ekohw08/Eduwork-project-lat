@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Portfolio Responsif</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #023e8a;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.75rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            padding: 2rem;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .intro img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        .biodata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background-color: #caf0f8;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .biodata div {
+            background-color: white;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .portfolio-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .intro {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#intro">Header</a>
+    <a href="#biodata">Biodata</a>
+    <a href="#portfolio">Portfolio</a>
+</nav>
+
+<section class="section intro" id="intro">
+    <div>
+        <h2>Selamat Datang di Website Saya</h2>
+        <p>Ini adalah halaman portfolio sederhana dengan desain responsif.</p>
+        <button>Pelajari lebih lanjut</button>
+    </div>
+    <div>
+        <img src="https://pixabay.com/id/photos/kamera-anak-laki-laki-anak-mode-tua-4921646/" alt="Contoh Gambar">
+    </div>
+</section>
+
+<section class="section" id="biodata">
+    <h2>About Me</h2>
+    <p>A brief introduction about myself</p>
+    <div class="biodata">
+        <div>Full Name</div>
+        <div>Education</div>
+        <div>Pekerjaan</div>
+        <div>Contact</div>
+        <div>Hobi</div>
+        <div>Alamat</div>
+    </div>
+</section>
+
+<section class="section" id="portfolio">
+    <h2>Portofolio</h2>
+    <div class="portfolio">
+        <div class="portfolio-item">
+            <img src="https://source.unsplash.com/300x200/?project,app" alt="Proyek 1">
+            <h3>Proyek 1</h3>
+            <p>Deskripsi Proyek 1</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://source.unsplash.com/300x200/?code,design" alt="Proyek 2">
+            <h3>Proyek 2</h3>
+            <p>Deskripsi Proyek 2</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://source.unsplash.com/300x200/?website" alt="Proyek 3">
+            <h3>Proyek 3</h3>
+            <p>Deskripsi Proyek 3</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://source.unsplash.com/300x200/?mobile,application" alt="Proyek 4">
+            <h3>Proyek 4</h3>
+            <p>Deskripsi Proyek 4</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Nama Anda. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
