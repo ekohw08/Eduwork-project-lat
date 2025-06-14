@@ -1,178 +1,178 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Portfolio Responsif</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Grid Layout Responsive – Revisi</title>
 
-        header {
-            background-color: #0077b6;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
+  <style>
+    /* ====== CSS RESET RINGAN ====== */
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 
-        nav {
-            background-color: #023e8a;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 0.75rem;
-        }
+    /* ====== VARIABEL WARNA (GANTI SESUAI SELERA) ====== */
+    :root {
+    --c-primary: #4caf50;        /* Hijau utama - lembut tapi tegas (menu, tombol) */
+    --c-primary-dark: #388e3c;   /* Hijau gelap - untuk hover atau header sticky */
+    --c-accent: #d8f3dc;         /* Hijau pastel sangat soft - latar portofolio */
+    --c-bg: #f1fdf5;             /* Latar belakang hero - putih kehijauan */
+    --c-text: #1b4332;           /* Warna teks gelap, agak kehijauan, modern */
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    body{
+      font-family:"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.6;
+      color:var(--c-text);
+    }
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+    a{ color:#fff; text-decoration:none; }
 
-        .section {
-            padding: 2rem;
-        }
+    /* ===== SECTION 1 : MENU ===== */
+    .menu{
+      background:var(--c-primary);
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+      position:sticky; top:0; z-index:1000;
+    }
+    .menu a{
+      padding:1rem .5rem;
+      text-align:center;
+      font-weight:600;
+      transition:background .3s;
+    }
+    .menu a:hover{ background:var(--c-primary-dark); }
 
-        .intro {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
+    /* ===== SECTION 2 : HERO ===== */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2rem;
+      padding:3rem 1.5rem;
+      background:var(--c-bg);
+      align-items:center;
+    }
+    .hero h1{ font-size:clamp(1.8rem,4vw,3rem); margin-bottom:.75rem; }
+    .hero p { max-width:40ch; margin-bottom:1.2rem; }
+    .hero img{
+      width:100%; height:auto; border-radius:12px;
+      object-fit:cover; min-height:240px;
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+    }
+    .hero button{
+      background:var(--c-primary); color:#fff;
+      border:none; padding:.75rem 1.5rem; border-radius:8px;
+      font-size:1rem; cursor:pointer; font-weight:600;
+      transition:background .3s, transform .2s;
+    }
+    .hero button:hover{ background:var(--c-primary-dark); transform:translateY(-2px); }
 
-        .intro img {
-            max-width: 100%;
-            border-radius: 12px;
-        }
+    /* ===== SECTION 3 : BIODATA ===== */
+    .biodata{ padding:3rem 1.5rem; }
+    .biodata h2{ text-align:center; margin-bottom:2rem; }
 
-        .biodata {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            background-color: #caf0f8;
-            padding: 1rem;
-            border-radius: 8px;
-        }
+    .bio-grid{
+      display:grid;
+      gap:1.25rem;
+      grid-template-columns:repeat(3, minmax(180px,1fr));
+    }
+    .bio-card{
+      background:#fafafa;
+      border:2px solid #e5e5e5;
+      border-radius:10px;
+      padding:1.25rem;
+      text-align:center;
+      font-weight:600;
+      box-shadow:0 2px 6px rgba(0,0,0,.08);
+      transition:transform .2s;
+    }
+    .bio-card:hover{ transform:translateY(-3px); }
+    .bio-card span{ display:block; font-weight:400; margin-top:.35rem; color:#555; }
 
-        .biodata div {
-            background-color: white;
-            padding: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            text-align: center;
-        }
+    /* ===== SECTION 4 : PORTOFOLIO ===== */
+    .portfolio{ background:var(--c-accent); padding:3rem 1.5rem; }
+    .portfolio h2{ text-align:center; margin-bottom:2rem; }
+    .port-grid{
+      display:grid;
+      gap:1.5rem;
+      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    }
+    .port-item{
+      background:#fff;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,.12);
+      transition:transform .25s;
+    }
+    .port-item:hover{ transform:translateY(-4px); }
+    .port-item img{ width:100%; aspect-ratio:16/9; object-fit:cover; }
+    .port-item h3{ padding:1rem 1.25rem; font-size:1.1rem; }
 
-        .portfolio {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
+    /* ===== MEDIA QUERIES ===== */
+    /* <= 992px  (tablet landscape) */
+    @media (max-width:992px){
+      .hero{ grid-template-columns:1fr; text-align:center; }
+      .hero img{ order:-1; }
+      .bio-grid{ grid-template-columns:repeat(2, minmax(160px,1fr)); }
+    }
 
-        .portfolio-item {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .portfolio-item img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-
-        footer {
-            background-color: #0077b6;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .intro {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-    </style>
+    /* <= 576px  (handphone) */
+    @media (max-width:576px){
+      .menu a{ padding:.9rem .3rem; font-size:.95rem; }
+      .hero{ padding:2rem 1rem; }
+      .biodata,.portfolio{ padding:2rem 1rem; }
+      .bio-grid{ grid-template-columns:1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-    <a href="#intro">Header</a>
+  <!-- ===== SECTION 1 : MENU ===== -->
+  <nav class="menu">
+    <a href="#hero">Header</a>
     <a href="#biodata">Biodata</a>
-    <a href="#portfolio">Portfolio</a>
-</nav>
+    <a href="#portofolio">Portofolio</a>
+  </nav>
 
-<section class="section intro" id="intro">
+  <!-- ===== SECTION 2 : HERO ===== -->
+  <section id="hero" class="hero">
     <div>
-        <h2>Selamat Datang di Website Saya</h2>
-        <p>Ini adalah halaman portfolio sederhana dengan desain responsif.</p>
-        <button>Pelajari lebih lanjut</button>
+      <h1>Selamat Datang di Web Saya</h1>
+      <p>Ini adalah contoh header dengan dua kolom. Kolom kiri berisi teks, sedangkan kolom kanan berisi gambar.</p>
+      <button>Pelajari Lebih Lanjut</button>
     </div>
-    <div>
-        <img src="https://pixabay.com/id/photos/kamera-anak-laki-laki-anak-mode-tua-4921646/" alt="Contoh Gambar">
-    </div>
-</section>
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1080&auto=format&fit=crop&q=70" alt="Ilustrasi coding" />
+  </section>
 
-<section class="section" id="biodata">
-    <h2>About Me</h2>
-    <p>A brief introduction about myself</p>
-    <div class="biodata">
-        <div>Full Name</div>
-        <div>Education</div>
-        <div>Pekerjaan</div>
-        <div>Contact</div>
-        <div>Hobi</div>
-        <div>Alamat</div>
+  <!-- ===== SECTION 3 : BIODATA ===== -->
+  <section id="biodata" class="biodata">
+    <h2>Biodata</h2>
+    <div class="bio-grid">
+      <div class="bio-card">Nama<span>John Doe</span></div>
+      <div class="bio-card">Usia<span>25 tahun</span></div>
+      <div class="bio-card">Kota<span>Jakarta</span></div>
+      <div class="bio-card">Email<span>john@example.com</span></div>
+      <div class="bio-card">Telepon<span>0812‑3456‑7890</span></div>
+      <div class="bio-card">Profesi<span>Web Developer</span></div>
     </div>
-</section>
+  </section>
 
-<section class="section" id="portfolio">
-    <h2>Portofolio</h2>
-    <div class="portfolio">
-        <div class="portfolio-item">
-            <img src="https://source.unsplash.com/300x200/?project,app" alt="Proyek 1">
-            <h3>Proyek 1</h3>
-            <p>Deskripsi Proyek 1</p>
-        </div>
-        <div class="portfolio-item">
-            <img src="https://source.unsplash.com/300x200/?code,design" alt="Proyek 2">
-            <h3>Proyek 2</h3>
-            <p>Deskripsi Proyek 2</p>
-        </div>
-        <div class="portfolio-item">
-            <img src="https://source.unsplash.com/300x200/?website" alt="Proyek 3">
-            <h3>Proyek 3</h3>
-            <p>Deskripsi Proyek 3</p>
-        </div>
-        <div class="portfolio-item">
-            <img src="https://source.unsplash.com/300x200/?mobile,application" alt="Proyek 4">
-            <h3>Proyek 4</h3>
-            <p>Deskripsi Proyek 4</p>
-        </div>
+  <!-- ===== SECTION 4 : PORTOFOLIO ===== -->
+<section id="portofolio" class="portfolio">
+  <h2>Portofolio</h2>
+  <div class="port-grid">
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=1080&auto=format&fit=crop&q=70" alt="Project 1" />
+      <h3>Project 1</h3>
     </div>
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1080&auto=format&fit=crop&q=70" alt="Project 2" />
+      <h3>Project 2</h3>
+    </div>
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1080&auto=format&fit=crop&q=70" alt="Project 3" />
+      <h3>Project 3</h3>
+    </div>
+  </div>
 </section>
-
-<footer>
-    <p>&copy; 2025 Nama Anda. All rights reserved.</p>
-</footer>
 
 </body>
 </html>
